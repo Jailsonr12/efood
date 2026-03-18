@@ -9,13 +9,28 @@ const Footer = () => (
     <div className="container">
       <Logo src={logo} alt="efood" />
       <SocialLinks>
-        <a href="#" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com/"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={instagram} alt="" />
         </a>
-        <a href="#" aria-label="Facebook">
+        <a
+          href="https://www.facebook.com/"
+          aria-label="Facebook"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={facebook} alt="" />
         </a>
-        <a href="#" aria-label="Twitter">
+        <a
+          href="https://x.com/"
+          aria-label="Twitter"
+          target="_blank"
+          rel="noreferrer"
+        >
           <img src={twitter} alt="" />
         </a>
       </SocialLinks>

@@ -1,4 +1,4 @@
-﻿import Footer from './components/Footer'
+import Footer from './components/Footer'
 import Header from './components/Header'
 import Rotas from './routes'
 import { GlobalCss } from './styles'
