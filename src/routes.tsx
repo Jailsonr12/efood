@@ -4,9 +4,10 @@ import Home from './pages/Home'
 
 const Rotas = () => (
   <Routes>
-    <Route path="*" element={<Home />} />
+    <Route path="/" element={<Home />} />
     <Route path="/home" element={<Home />} />
     <Route path="/perfil" element={<Categories />} />
+    <Route path="*" element={<Home />} />
   </Routes>
 )
 

@@ -1,5 +1,6 @@
 import Tag from '../Tag'
 import {
+  ButtonLink,
   Card,
   Content,
   Descricao,
@@ -45,7 +46,9 @@ const Product = ({
       </TopLine>
 
       <Descricao>{description}</Descricao>
-      <Tag>{category}</Tag>
+      <ButtonLink to="/perfil" title={`Saiba mais sobre ${title}`}>
+        {category}
+      </ButtonLink>
     </Content>
   </Card>
 )

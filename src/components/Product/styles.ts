@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
@@ -61,4 +62,14 @@ export const Infos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+`
+
+export const ButtonLink = styled(Link)`
+  background-color: ${cores.vermelho};
+  color: ${cores.vermelhoClaro};
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 16px;
+  display: inline-block;
+  text-decoration: none;
 `
