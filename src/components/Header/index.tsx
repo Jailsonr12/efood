@@ -12,14 +12,14 @@ import {
 
 const Header = () => {
   const { pathname } = useLocation()
-  const isProfilePage = pathname === '/perfil'
+  const isRestaurantPage = pathname.startsWith('/restaurante/')
 
-  if (isProfilePage) {
+  if (isRestaurantPage) {
     return (
       <CompactHeaderBar>
         <div className="container">
           <CompactHeaderContent>
-            <TopLink to="/perfil">Restaurantes</TopLink>
+            <TopLink to="/">Restaurantes</TopLink>
             <Link to="/">
               <Logo src={logo} alt="efood" />
             </Link>
@@ -33,7 +33,7 @@ const Header = () => {
   return (
     <Headerbar>
       <div className="container">
-        <Link to="/perfil">
+        <Link to="/">
           <Logo src={logo} alt="efood" />
         </Link>
         <HeroTitle>

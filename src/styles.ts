@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   branca: '#FFF',
@@ -31,4 +31,16 @@ export const GlobalCss = createGlobalStyle`
     margin: 0 auto;
     padding: 0 16px;
   }
+`
+
+export const PageSection = styled.section`
+  padding: 80px 0 120px;
+`
+
+export const PageMessage = styled.p`
+  color: ${cores.vermelho};
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
 `

@@ -1,12 +1,28 @@
-import { HeroContainer, HeroCuisine, HeroTitle } from './styles'
+import { HeroContainer, HeroCuisine, HeroTitle } from "./styles";
 
-const ProfileHero = () => (
-  <HeroContainer>
-    <div className="container">
-      <HeroCuisine>Italiana</HeroCuisine>
-      <HeroTitle>La Dolce Vita Trattoria</HeroTitle>
-    </div>
-  </HeroContainer>
-)
+type Props = {
+    cuisine?: string;
+    title?: string;
+    backgroundImage?: string;
+};
 
-export default ProfileHero
+const ProfileHero = ({
+    cuisine = "Italiana",
+    title = "La Dolce Vita Trattoria",
+    backgroundImage,
+}: Props) => (
+    <HeroContainer
+        style={
+            backgroundImage
+                ? { backgroundImage: `url(${backgroundImage})` }
+                : {}
+        }
+    >
+        <div className="container">
+            <HeroCuisine>{cuisine}</HeroCuisine>
+            <HeroTitle>{title}</HeroTitle>
+        </div>
+    </HeroContainer>
+);
+
+export default ProfileHero;
