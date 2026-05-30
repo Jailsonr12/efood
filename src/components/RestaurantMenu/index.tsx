@@ -1,4 +1,4 @@
-﻿import { MouseEvent, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 
 import { useCart } from '../../contexts/CartContext'
 import {
