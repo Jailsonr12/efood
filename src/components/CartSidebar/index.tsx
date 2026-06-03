@@ -135,20 +135,20 @@ const CartSidebar = () => {
   const validateDelivery = () => {
     const errors: Record<string, string> = {}
 
-    if (!delivery.receiver.trim()) errors.receiver = 'Informe quem vai receber'
-    if (!delivery.address.trim()) errors.address = 'Informe o endereco'
+    if (!delivery.receiver.trim()) errors.receiver = 'Informe quem irá receber'
+    if (!delivery.address.trim()) errors.address = 'Informe o endereço'
     if (!delivery.city.trim()) errors.city = 'Informe a cidade'
 
     if (!delivery.zip.trim()) {
       errors.zip = 'Informe o CEP'
     } else if (onlyDigits(delivery.zip).length !== 8) {
-      errors.zip = 'CEP deve ter 8 digitos'
+      errors.zip = 'CEP deve ter 8 dígitos'
     }
 
     if (!delivery.number.trim()) {
-      errors.number = 'Informe o numero'
+      errors.number = 'Informe o número'
     } else if (!/^\d+$/.test(delivery.number.trim())) {
-      errors.number = 'Numero invalido'
+      errors.number = 'Número inválido'
     }
 
     setDeliveryErrors(errors)
@@ -158,27 +158,27 @@ const CartSidebar = () => {
   const validatePayment = () => {
     const errors: Record<string, string> = {}
 
-    if (!payment.cardName.trim()) errors.cardName = 'Informe o nome no cartao'
+    if (!payment.cardName.trim()) errors.cardName = 'Informe o nome no cartão'
 
     const cardDigits = onlyDigits(payment.cardNumber)
     if (!cardDigits) {
-      errors.cardNumber = 'Informe o numero do cartao'
+      errors.cardNumber = 'Informe o número do cartão'
     } else if (cardDigits.length < 13 || cardDigits.length > 19) {
-      errors.cardNumber = 'Cartao invalido'
+      errors.cardNumber = 'Cartão inválido'
     }
 
     const cvvDigits = onlyDigits(payment.cvv)
     if (!cvvDigits) {
       errors.cvv = 'Informe o CVV'
     } else if (cvvDigits.length < 3 || cvvDigits.length > 4) {
-      errors.cvv = 'CVV invalido'
+      errors.cvv = 'CVV inválido'
     }
 
     const month = Number(onlyDigits(payment.expMonth))
     if (!payment.expMonth.trim()) {
-      errors.expMonth = 'Informe o mes'
+      errors.expMonth = 'Informe o mês'
     } else if (!Number.isInteger(month) || month < 1 || month > 12) {
-      errors.expMonth = 'Mes invalido'
+      errors.expMonth = 'Mês inválido'
     }
 
     const yearDigits = onlyDigits(payment.expYear)
@@ -188,9 +188,9 @@ const CartSidebar = () => {
     if (!yearDigits) {
       errors.expYear = 'Informe o ano'
     } else if (yearDigits.length !== 2 && yearDigits.length !== 4) {
-      errors.expYear = 'Ano invalido'
+      errors.expYear = 'Ano inválido'
     } else if (year < currentYear || year > currentYear + 20) {
-      errors.expYear = 'Ano invalido'
+      errors.expYear = 'Ano inválido'
     }
 
     setPaymentErrors(errors)
@@ -241,7 +241,7 @@ const CartSidebar = () => {
       setOrderId(response.orderId)
       setStep('success')
     } catch (error) {
-      setSubmitError('Nao foi possivel finalizar o pedido. Tente novamente.')
+      setSubmitError('Não foi possível finalizar o pedido. Tente novamente.')
     } finally {
       setIsSubmitting(false)
     }
@@ -307,7 +307,7 @@ const CartSidebar = () => {
                   </CartAction>
                 </>
               ) : (
-                <EmptyText>Seu carrinho esta vazio.</EmptyText>
+                <EmptyText>Seu carrinho está vazio.</EmptyText>
               )}
             </>
           ) : step === 'delivery' ? (
@@ -315,7 +315,7 @@ const CartSidebar = () => {
               <FormTitle>Entrega</FormTitle>
 
               <FormField>
-                <FormLabel>Quem ira receber</FormLabel>
+                <FormLabel>Quem irá receber</FormLabel>
                 <FormInput
                   value={delivery.receiver}
                   onChange={changeDelivery('receiver')}
@@ -328,7 +328,7 @@ const CartSidebar = () => {
               </FormField>
 
               <FormField>
-                <FormLabel>Endereco</FormLabel>
+                <FormLabel>Endereço</FormLabel>
                 <FormInput
                   value={delivery.address}
                   onChange={changeDelivery('address')}
@@ -346,7 +346,7 @@ const CartSidebar = () => {
                   value={delivery.city}
                   onChange={changeDelivery('city')}
                   $hasError={!!deliveryErrors.city}
-                  placeholder="Ex: Sao Paulo"
+                  placeholder="Ex: São Paulo"
                 />
                 {deliveryErrors.city && (
                   <FieldError>{deliveryErrors.city}</FieldError>
@@ -367,7 +367,7 @@ const CartSidebar = () => {
                   )}
                 </FormField>
                 <FormField>
-                  <FormLabel>Numero</FormLabel>
+                  <FormLabel>Número</FormLabel>
                   <FormInput
                     value={delivery.number}
                     onChange={changeDeliveryDigits('number', 10)}
@@ -385,7 +385,7 @@ const CartSidebar = () => {
                 <FormInput
                   value={delivery.complement}
                   onChange={changeDelivery('complement')}
-                  placeholder="Apto, bloco, referencia"
+                  placeholder="Apto, bloco, referência"
                 />
               </FormField>
 
@@ -412,12 +412,12 @@ const CartSidebar = () => {
               </FormTitle>
 
               <FormField>
-                <FormLabel>Nome no cartao</FormLabel>
+                <FormLabel>Nome no cartão</FormLabel>
                 <FormInput
                   value={payment.cardName}
                   onChange={changePayment('cardName')}
                   $hasError={!!paymentErrors.cardName}
-                  placeholder="Como esta no cartao"
+                  placeholder="Como está no cartão"
                 />
                 {paymentErrors.cardName && (
                   <FieldError>{paymentErrors.cardName}</FieldError>
@@ -426,7 +426,7 @@ const CartSidebar = () => {
 
               <FormGrid>
                 <FormField>
-                  <FormLabel>Numero do cartao</FormLabel>
+                  <FormLabel>Número do cartão</FormLabel>
                   <FormInput
                     value={payment.cardNumber}
                     onChange={changePaymentDigits('cardNumber', 19)}
@@ -493,7 +493,7 @@ const CartSidebar = () => {
                   onClick={() => setStep('delivery')}
                   disabled={isSubmitting}
                 >
-                  Voltar para a edicao de endereco
+                  Voltar para a edição de endereço
                 </CartAction>
               </FormActions>
             </>
@@ -502,21 +502,21 @@ const CartSidebar = () => {
               <FormTitle>Pedido realizado - {orderId ?? ''}</FormTitle>
 
               <SuccessText>
-                Estamos felizes em informar que seu pedido ja esta em processo
-                de preparacao e, em breve, sera entregue no endereco fornecido.
+                Estamos felizes em informar que seu pedido já está em processo
+                de preparação e, em breve, será entregue no endereço fornecido.
               </SuccessText>
               <SuccessText>
-                Gostariamos de ressaltar que nossos entregadores nao estao
-                autorizados a realizar cobrancas extras.
+                Gostaríamos de ressaltar que nossos entregadores não estão
+                autorizados a realizar cobranças extras.
               </SuccessText>
               <SuccessText>
-                Lembre-se da importancia de higienizar as maos apos o
-                recebimento do pedido, garantindo assim sua seguranca e
-                bem-estar durante a refeicao.
+                Lembre-se da importância de higienizar as mãos após o
+                recebimento do pedido, garantindo assim sua segurança e
+                bem-estar durante a refeição.
               </SuccessText>
               <SuccessText>
                 Esperamos que desfrute de uma deliciosa e agradavel experiencia
-                gastronomica. Bom apetite!
+                gastronômica. Bom apetite!
               </SuccessText>
 
               <FormActions>

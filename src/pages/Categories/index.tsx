@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ProfileHero from "../../components/ProfileHero";
 import RestaurantMenu, { Dish } from "../../components/RestaurantMenu";
 import { Restaurant } from "../../models/Restaurant";
+import { formatCurrency } from "../../utils/format";
 
 const Categories = () => {
     const { id } = useParams<{ id?: string }>();
@@ -45,7 +46,7 @@ const Categories = () => {
         image: item.foto,
         price: item.preco,
         serving: item.porcao,
-        priceLabel: `Adicionar ao carrinho - R$ ${item.preco.toFixed(2)}`,
+        priceLabel: `Adicionar ao carrinho - ${formatCurrency(item.preco)}`,
     }));
 
     return (
