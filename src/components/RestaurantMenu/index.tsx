@@ -1,6 +1,8 @@
 import { MouseEvent, useState } from 'react'
 
-import { useCart } from '../../contexts/CartContext'
+import { useAppDispatch } from '../../store/hooks'
+import { addItem, openCart } from '../../store/reducers/cart'
+import { formatCurrency } from '../../utils/format'
 import {
   CloseButton,
   List,
@@ -37,21 +39,23 @@ type Props = {
 
 const RestaurantMenu = ({ dishes }: Props) => {
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null)
-  const { addItem, openCart } = useCart()
+  const dispatch = useAppDispatch()
 
   const addDishToCart = () => {
     if (!selectedDish) {
       return
     }
 
-    addItem({
-      id: selectedDish.id,
-      image: selectedDish.image,
-      title: selectedDish.title,
-      price: selectedDish.price
-    })
+    dispatch(
+      addItem({
+        productId: selectedDish.id,
+        image: selectedDish.image,
+        title: selectedDish.title,
+        price: selectedDish.price
+      })
+    )
     setSelectedDish(null)
-    openCart()
+    dispatch(openCart())
   }
 
   return (
@@ -91,7 +95,10 @@ const RestaurantMenu = ({ dishes }: Props) => {
                 {selectedDish.serving ?? 'Serve: de 2 a 3 pessoas'}
               </ModalServing>
               <ModalAction type="button" onClick={addDishToCart}>
-                {selectedDish.priceLabel ?? 'Adicionar ao carrinho - R$ 60,90'}
+                {selectedDish.priceLabel ??
+                  `Adicionar ao carrinho - ${formatCurrency(
+                    selectedDish.price
+                  )}`}
               </ModalAction>
             </ModalText>
           </ModalContent>
